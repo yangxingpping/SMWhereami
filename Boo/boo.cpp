@@ -3,6 +3,10 @@
 
 int main()
 {
-  SPDLOG_INFO("Hello, Boo!");
-  return 0;
+	char chPath[1024];
+	int cap = wai_getExecutablePath(chPath, sizeof(chPath) / sizeof(char), nullptr);
+	assert(cap != -1);
+	chPath[cap - 1] = '\0';
+	SPDLOG_INFO("Hello, Boo! {}", chPath);
+	return 0;
 }
